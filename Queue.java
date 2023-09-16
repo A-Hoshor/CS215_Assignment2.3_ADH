@@ -4,7 +4,7 @@
  * This class implements a queue that holds the String names of customers that are coming to the VegeBurger Palace.
  *
  */
-public class Queue implements QueueInterface{
+public class Queue implements QueueInterface<String>{
 
 	LinkedList<String> list = new LinkedList<String>();
 	Node<String> head = new Node<String>();
@@ -31,7 +31,7 @@ public class Queue implements QueueInterface{
 	 * @returnObject at front of queue
 	 */
 	@Override
-	public String dequeue() throws Exception {
+	public String dequeue() throws Exception {	
 		if (isEmpty() == true) {
 			throw new Exception("There is nothing in the queue to dequeue.");
 		}//end if statement
@@ -40,16 +40,16 @@ public class Queue implements QueueInterface{
 			head = head.getNextNode();
 			length--;
 			return result + " has left the line.\n";
-		}//end else statemetn
+		}//end else statement
 	}//end dequeue method
 
 	/**Prints entire queue.
 	 * @return queue.
 	 */
 	@Override
-	public Object printQueue() {
+	public String printQueue() {
 		String result = "";
-		Node current = head;
+		Node<String> current = head;
 		while (current != null) {
 			result = result + current.getData() + "\n";
 			current = current.getNextNode();
@@ -62,7 +62,7 @@ public class Queue implements QueueInterface{
 	 * @throws Exception 
 	 */
 	@Override
-	public Object getFront() throws Exception{
+	public String getFront() throws Exception{
 		if (isEmpty())
 			throw new Exception("There is nothing in this queue.");
 		
